@@ -76,7 +76,10 @@
   <!-- HERO -->
   <section class="hero" aria-label="Apresentação">
     <div class="hero-media" aria-hidden="true">
-      <img src="assets/img/badge-sky.webp" alt="" loading="eager" fetchpriority="high">
+      <picture>
+        <source media="(max-width: 640px)" srcset="assets/img/badge-sky-mobile.webp">
+        <img src="assets/img/badge-sky.webp" alt="" loading="eager" fetchpriority="high">
+      </picture>
       <div class="hero-media-fade"></div>
     </div>
 

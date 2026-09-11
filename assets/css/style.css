@@ -230,6 +230,7 @@ svg{ width: 1em; height: 1em; fill: currentColor; flex: none; }
   width: 64px; height: 64px; background: var(--red);
   clip-path: polygon(0 0, 100% 0, 0 100%);
 }
+.hero-media picture{ display: block; width: 100%; height: 100%; }
 .hero-media img{
   width: 100%; height: 100%; object-fit: cover; object-position: 42% 38%;
   filter: grayscale(.1) contrast(1.05) saturate(1.05) brightness(.94);
@@ -513,13 +514,16 @@ html.reveal-ready [data-reveal].is-visible{ opacity: 1; transform: translateY(0)
 }
 
 @media (max-width: 640px){
-  .hero{ padding-top: 120px; flex-direction: column; align-items: stretch; padding-bottom: 80px; }
+  .hero{ padding-top: 0; flex-direction: column; align-items: stretch; padding-bottom: 64px; }
   .hero-media{
-    position: static; width: 100%; height: auto; aspect-ratio: 16/11;
-    margin-top: 30px; order: 2;
+    position: static; width: 100%; height: auto; aspect-ratio: 1/1;
+    margin-top: 0; order: -1;
+    border: none; border-radius: 0; box-shadow: none;
   }
-  .hero-media img{ object-position: 44% 38%; }
-  .hero-copy{ max-width: 100%; }
+  .hero-media::before{ display: none; }
+  .hero-media img{ object-position: 50% 46%; filter: none; }
+  .hero-media-fade{ background: linear-gradient(180deg, transparent 45%, var(--bg) 97%); }
+  .hero-copy{ max-width: 100%; padding-top: 36px; }
   .hero-tag{ position: static; margin-top: 20px; max-width: 100%; display: inline-flex; order: 3; }
 
   .schedule-row{ grid-template-columns: 1fr; gap: 6px; }
