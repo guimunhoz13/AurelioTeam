@@ -178,12 +178,7 @@ svg{ width: 1em; height: 1em; fill: currentColor; flex: none; }
 .brand-mark{
   width: 38px; height: 38px; flex: none;
   border-radius: 50%;
-  border: 2px solid var(--red);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--display);
-  font-size: 1.1rem;
-  color: var(--ink);
-  background: var(--panel);
+  object-fit: cover;
 }
 .brand-word{ display: flex; flex-direction: column; line-height: 1.15; }
 .brand-word strong{ font-size: .82rem; letter-spacing: .06em; font-weight: 800; }
