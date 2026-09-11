@@ -216,32 +216,42 @@ svg{ width: 1em; height: 1em; fill: currentColor; flex: none; }
   padding-top: 90px;
   overflow: hidden;
 }
-.hero-media{
-  position: absolute; z-index: 1;
-  top: 13%; bottom: 13%; right: var(--pad);
-  width: min(38vw, 480px);
-  border-radius: 2px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);
-}
-.hero-media::before{
-  content: ""; position: absolute; z-index: 2; top: -14px; left: -14px;
-  width: 64px; height: 64px; background: var(--red);
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-}
-.hero-media picture{ display: block; width: 100%; height: 100%; }
-.hero-media img{
-  width: 100%; height: 100%; object-fit: cover; object-position: 42% 38%;
-  filter: grayscale(.1) contrast(1.05) saturate(1.05) brightness(.94);
-}
-.hero-media-fade{
-  position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(18,16,18,.65), transparent 45%);
+.hero-divider{
+  position: absolute; z-index: 1; top: -10%; bottom: -10%; left: 56%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, var(--red-bright) 18%, var(--red) 82%, transparent);
+  transform: rotate(8deg);
+  box-shadow: 0 0 28px 2px rgba(255,65,70,.4);
+  pointer-events: none;
 }
 
-.hero-grid{ position: relative; z-index: 2; width: 100%; }
-.hero-copy{ max-width: 640px; }
+.hero-grid{
+  position: relative; z-index: 2; width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: clamp(24px, 4vw, 64px);
+}
+.hero-copy{ max-width: 600px; flex: 1 1 480px; }
+
+.hero-medal{ flex: 0 0 auto; width: min(34vw, 460px); }
+.hero-medal-circle{
+  position: relative; width: 100%; aspect-ratio: 1/1;
+  border-radius: 50%; overflow: hidden;
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 40px 90px -24px rgba(0,0,0,.75),
+    0 0 70px -12px rgba(212,32,39,.3),
+    inset 0 0 50px 14px rgba(5,4,5,.55);
+}
+.hero-medal-circle img{
+  width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1);
+  filter: contrast(1.08) saturate(1.1);
+}
+.hero-medal-glow{
+  position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 32% 22%, rgba(255,255,255,.22), transparent 45%);
+  mix-blend-mode: screen;
+}
 
 .hero-title{ margin: 0 0 26px; }
 .hero-title .line{
@@ -500,7 +510,7 @@ html.reveal-ready [data-reveal].is-visible{ opacity: 1; transform: translateY(0)
   }
   #main-nav.is-open a{ font-size: 1.6rem; font-family: var(--display); text-transform: uppercase; }
 
-  .hero-media{ width: min(34vw, 360px); }
+  .hero-medal{ width: min(34vw, 360px); }
   .hero-tag{ max-width: calc(100vw - 2*var(--pad)); left: var(--pad); right: var(--pad); bottom: 20px; }
 
   .sobre-grid, .professor-grid{ grid-template-columns: 1fr; }
@@ -514,17 +524,12 @@ html.reveal-ready [data-reveal].is-visible{ opacity: 1; transform: translateY(0)
 }
 
 @media (max-width: 640px){
-  .hero{ padding-top: 0; flex-direction: column; align-items: stretch; padding-bottom: 64px; }
-  .hero-media{
-    position: static; width: 100%; height: auto; aspect-ratio: 1/1;
-    margin-top: 0; order: -1;
-    border: none; border-radius: 0; box-shadow: none;
-  }
-  .hero-media::before{ display: none; }
-  .hero-media img{ object-position: 50% 46%; filter: none; }
-  .hero-media-fade{ background: linear-gradient(180deg, transparent 45%, var(--bg) 97%); }
-  .hero-copy{ max-width: 100%; padding-top: 36px; }
-  .hero-tag{ position: static; margin-top: 20px; max-width: 100%; display: inline-flex; order: 3; }
+  .hero{ padding-top: 120px; padding-bottom: 56px; flex-direction: column; align-items: stretch; }
+  .hero-divider{ display: none; }
+  .hero-grid{ flex-direction: column; align-items: center; gap: 30px; }
+  .hero-medal{ order: -1; width: min(76vw, 340px); }
+  .hero-copy{ max-width: 100%; }
+  .hero-tag{ position: static; margin-top: 20px; max-width: 100%; display: inline-flex; }
 
   .schedule-row{ grid-template-columns: 1fr; gap: 6px; }
   .day{ font-size: .95rem; }
